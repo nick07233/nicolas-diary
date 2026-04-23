@@ -163,12 +163,14 @@ button {
   gap: 16px;
 }
 
-.entry-form label {
+.entry-form label,
+.list-field {
   display: grid;
   gap: 7px;
 }
 
-.entry-form label > span {
+.entry-form label > span,
+.field-heading span {
   color: var(--muted);
   font-size: 0.86rem;
   font-weight: 700;
@@ -201,7 +203,7 @@ select {
 }
 
 textarea {
-  min-height: 220px;
+  min-height: 170px;
   resize: vertical;
   padding: 12px;
 }
@@ -223,6 +225,80 @@ textarea:focus {
 
 .form-actions {
   grid-column: 1 / -1;
+}
+
+.field-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.field-heading > div {
+  min-width: 0;
+}
+
+.field-heading p {
+  margin: 2px 0 0;
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+.small-action {
+  display: inline-flex;
+  align-items: center;
+  align-self: start;
+  gap: 6px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--accent-dark);
+  font-size: 0.86rem;
+  font-weight: 800;
+  min-height: 34px;
+  padding: 0 10px;
+  transition:
+    transform 160ms ease,
+    border-color 160ms ease,
+    background-color 160ms ease;
+}
+
+.small-action:hover {
+  border-color: #cfc5b7;
+  background: #f7f3eb;
+  transform: translateY(-1px);
+}
+
+.small-action svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2.4;
+}
+
+.checklist-editor {
+  display: grid;
+  gap: 8px;
+}
+
+.checklist-row {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr) 40px;
+  gap: 8px;
+  align-items: center;
+}
+
+.checklist-check {
+  width: 19px;
+  height: 19px;
+  margin: 0 auto;
+  accent-color: var(--accent);
+}
+
+.checklist-input {
+  height: 40px;
 }
 
 .button,
@@ -300,6 +376,12 @@ textarea:focus {
   width: 42px;
   height: 42px;
   flex: 0 0 auto;
+}
+
+.remove-item {
+  width: 40px;
+  height: 40px;
+  color: var(--muted);
 }
 
 .entry-count {
@@ -389,9 +471,51 @@ textarea:focus {
   padding: 5px 10px;
 }
 
-.reader-entry h2 {
+.reader-entry h2,
+.reader-section h3 {
   margin-bottom: 14px;
   overflow-wrap: anywhere;
+}
+
+.reader-sections {
+  display: grid;
+  gap: 20px;
+}
+
+.reader-section {
+  border-top: 1px solid var(--line);
+  padding-top: 16px;
+}
+
+.reader-section h3 {
+  margin-top: 0;
+  color: var(--accent-dark);
+  font-size: 0.88rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.reader-list {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding-left: 20px;
+}
+
+.reader-list li {
+  color: #3b362e;
+  overflow-wrap: anywhere;
+}
+
+.reader-list li.is-done {
+  text-decoration: line-through;
+  text-decoration-color: rgba(62, 111, 96, 0.55);
+}
+
+.reader-list-empty {
+  color: var(--muted);
+  list-style: none;
+  margin-left: -20px;
 }
 
 .reader-entry p {
@@ -448,6 +572,14 @@ textarea:focus {
 
   .entry-form {
     grid-template-columns: 1fr;
+  }
+
+  .field-heading {
+    display: grid;
+  }
+
+  .small-action {
+    justify-self: start;
   }
 
   .form-actions,

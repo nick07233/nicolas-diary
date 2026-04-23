@@ -68,13 +68,44 @@
               </select>
             </label>
 
-            <label class="wide-field" for="entry-body">
-              <span>Entry</span>
+            <section class="list-field wide-field" aria-labelledby="completed-title">
+              <div class="field-heading">
+                <div>
+                  <span id="completed-title">Today's completed items</span>
+                  <p>Capture what actually got done.</p>
+                </div>
+                <button class="small-action" type="button" id="add-completed-button">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 5v14M5 12h14" />
+                  </svg>
+                  Add
+                </button>
+              </div>
+              <div class="checklist-editor" id="completed-list"></div>
+            </section>
+
+            <section class="list-field wide-field" aria-labelledby="plans-title">
+              <div class="field-heading">
+                <div>
+                  <span id="plans-title">Tomorrow's plan</span>
+                  <p>Keep the next day visible before you close today.</p>
+                </div>
+                <button class="small-action" type="button" id="add-plan-button">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 5v14M5 12h14" />
+                  </svg>
+                  Add
+                </button>
+              </div>
+              <div class="checklist-editor" id="plan-list"></div>
+            </section>
+
+            <label class="wide-field" for="entry-reflection">
+              <span>Reflection</span>
               <textarea
-                id="entry-body"
-                rows="12"
-                placeholder="Write what happened, what mattered, or what you want to remember."
-                required
+                id="entry-reflection"
+                rows="8"
+                placeholder="Write the thoughts, feelings, or lessons you want to keep."
               ></textarea>
             </label>
 
@@ -114,7 +145,20 @@
               <span id="reader-mood"></span>
             </div>
             <h2 id="reader-entry-title"></h2>
-            <p id="reader-body"></p>
+            <div class="reader-sections">
+              <section class="reader-section">
+                <h3>Today's completed items</h3>
+                <ul class="reader-list" id="reader-completed"></ul>
+              </section>
+              <section class="reader-section">
+                <h3>Tomorrow's plan</h3>
+                <ul class="reader-list" id="reader-plans"></ul>
+              </section>
+              <section class="reader-section">
+                <h3>Reflection</h3>
+                <p id="reader-reflection"></p>
+              </section>
+            </div>
             <div class="reader-actions">
               <button class="button secondary" type="button" id="edit-button">
                 <svg viewBox="0 0 24 24" aria-hidden="true">
