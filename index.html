@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nicolas Diary</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="site-header">
+        <div>
+          <p class="eyebrow">Private journal</p>
+          <h1>Nicolas Diary</h1>
+        </div>
+        <div class="header-mark" aria-hidden="true">
+          <svg viewBox="0 0 96 96" role="img">
+            <path
+              d="M26 18h35c7 0 13 6 13 13v47H33c-8 0-15-7-15-15V26c0-4 4-8 8-8Z"
+            />
+            <path d="M34 34h24M34 48h29M34 62h18" />
+          </svg>
+        </div>
+      </header>
+
+      <main class="workspace" aria-live="polite">
+        <section class="editor-panel" aria-labelledby="editor-title">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Write</p>
+              <h2 id="editor-title">New entry</h2>
+            </div>
+            <button class="icon-button ghost" type="button" id="new-entry-button" aria-label="Start a new entry" title="New entry">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 5v14M5 12h14" />
+              </svg>
+            </button>
+          </div>
+
+          <form id="entry-form" class="entry-form">
+            <input type="hidden" id="entry-id" />
+
+            <label for="entry-date">
+              <span>Date</span>
+              <input type="date" id="entry-date" required />
+            </label>
+
+            <label for="entry-title">
+              <span>Title</span>
+              <input
+                type="text"
+                id="entry-title"
+                placeholder="A short title for today"
+                maxlength="80"
+                required
+              />
+            </label>
+
+            <label for="entry-mood">
+              <span>Mood</span>
+              <select id="entry-mood" required>
+                <option value="Calm">Calm</option>
+                <option value="Focused">Focused</option>
+                <option value="Tired">Tired</option>
+                <option value="Hopeful">Hopeful</option>
+                <option value="Restless">Restless</option>
+                <option value="Grateful">Grateful</option>
+              </select>
+            </label>
+
+            <label class="wide-field" for="entry-body">
+              <span>Entry</span>
+              <textarea
+                id="entry-body"
+                rows="12"
+                placeholder="Write what happened, what mattered, or what you want to remember."
+                required
+              ></textarea>
+            </label>
+
+            <div class="form-actions">
+              <button class="button secondary" type="button" id="clear-button">Clear</button>
+              <button class="button primary" type="submit" id="save-button">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M5 12.5 10 17l9-10" />
+                </svg>
+                <span id="save-button-label">Save entry</span>
+              </button>
+            </div>
+          </form>
+        </section>
+
+        <aside class="entries-panel" aria-labelledby="entries-title">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Saved</p>
+              <h2 id="entries-title">Entries</h2>
+            </div>
+            <span class="entry-count" id="entry-count">0</span>
+          </div>
+          <div class="entries-list" id="entries-list"></div>
+        </aside>
+
+        <section class="reader-panel" aria-labelledby="reader-title">
+          <div class="reader-empty" id="reader-empty">
+            <p class="eyebrow">Reader</p>
+            <h2 id="reader-title">Select an entry</h2>
+            <p>Choose a saved entry to view, edit, or delete it.</p>
+          </div>
+
+          <article class="reader-entry hidden" id="reader-entry">
+            <div class="reader-meta">
+              <span id="reader-date"></span>
+              <span id="reader-mood"></span>
+            </div>
+            <h2 id="reader-entry-title"></h2>
+            <p id="reader-body"></p>
+            <div class="reader-actions">
+              <button class="button secondary" type="button" id="edit-button">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="m4 20 4.5-1L19 8.5 15.5 5 5 15.5 4 20Z" />
+                  <path d="m13.5 7 3.5 3.5" />
+                </svg>
+                Edit
+              </button>
+              <button class="button danger" type="button" id="delete-button">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M6 7h12M10 11v6M14 11v6M9 7l1-3h4l1 3M8 7l1 13h6l1-13" />
+                </svg>
+                Delete
+              </button>
+            </div>
+          </article>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
